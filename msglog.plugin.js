@@ -35,7 +35,7 @@
 
 module.exports = class MessageLoggerV2 {
   getName() {
-    return 'niggascriptbypassed';
+    return 'msglogg bypassed by jordan';
   }
   getVersion() {
     return '1';
@@ -204,14 +204,14 @@ module.exports = class MessageLoggerV2 {
       ZeresPluginLibrary.WebpackModules.getByProps('openModal', 'hasModalOpen').closeModal(`${this.getName()}_DEP_MODAL`);
     } catch (e) { }
     // force update
-    ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), 'https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/MessageLoggerV2/MessageLoggerV2.plugin.js');
-    if (window.PluginUpdates && window.PluginUpdates.plugins) delete PluginUpdates.plugins['https://gitlab.com/_Lighty_/bdstuff/raw/master/public/plugins/MessageLoggerV2.plugin.js'];
+    ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), 'https://raw.githubusercontent.com/gotjordan/plugins/main/msglog.plugin.js');
+    if (window.PluginUpdates && window.PluginUpdates.plugins) delete PluginUpdates.plugins['https://raw.githubusercontent.com/gotjordan/plugins/main/msglog.plugin.js'];
     if (BdApi.Plugins && BdApi.Plugins.get('NoDeleteMessages') && BdApi.Plugins.isEnabled('NoDeleteMessages')) XenoLib.Notifications.warning(`[**${this.getName()}**] Using **NoDeleteMessages** with **${this.getName()}** is completely unsupported and will cause issues. Please either disable **NoDeleteMessages** or delete it to avoid issues.`, { timeout: 0 });
     if (BdApi.Plugins && BdApi.Plugins.get('SuppressUserMentions') && BdApi.Plugins.isEnabled('SuppressUserMentions')) XenoLib.Notifications.warning(`[**${this.getName()}**] Using **SuppressUserMentions** with **${this.getName()}** is completely unsupported and will cause issues. Please either disable **SuppressUserMentions** or delete it to avoid issues.`, { timeout: 0 });
     if (BdApi.Plugins && BdApi.Plugins.get('MessageLogger') && BdApi.Plugins.isEnabled('MessageLogger')) XenoLib.Notifications.warning(`[**${this.getName()}**] Using **MessageLogger** with **${this.getName()}** is completely unsupported and will cause issues. Please either disable **MessageLogger** or delete it to avoid issues.`, { timeout: 0 });
     if (window.ED && !this.__isPowerCord) XenoLib.Notifications.warning(`[${this.getName()}] EnhancedDiscord is unsupported! Expect unintended issues and bugs.`, { timeout: 7500 });
     const shouldPass = e => e && e.constructor && typeof e.constructor.name === 'string' && e.constructor.name.indexOf('HTML');
-    if (shouldPass(window.Lightcord)) XenoLib.Notifications.warning(`[${this.getName()}] Lightcord is an unofficial and unsafe client with stolen code that is falsely advertising that it is safe, Lightcord has allowed the spread of token loggers hidden within plugins redistributed by them, and these plugins are not made to work on it. Your account is very likely compromised by malicious people redistributing other peoples plugins, especially if you didn't download this plugin from [GitHub](https://github.com/1Lighty/BetterDiscordPlugins/edit/master/Plugins/MessageLoggerV2/MessageLoggerV2.plugin.js), you should change your password immediately. Consider using a trusted client mod like [BandagedBD](https://rauenzi.github.io/BetterDiscordApp/) or [Powercord](https://powercord.dev/) to avoid losing your account.`, { timeout: 0 });
+    if (shouldPass(window.Lightcord)) XenoLib.Notifications.warning(`[${this.getName()}] bypassed`, { timeout: 0 });
     let defaultSettings = {
       obfuscateCSSClasses: true,
       autoBackup: false,
@@ -1090,7 +1090,7 @@ module.exports = class MessageLoggerV2 {
     const updateFail = () => XenoLib.Notifications.warning(`[${this.getName()}] Unable to check for updates!`, { timeout: 7500 });
     new Promise(resolve => {
       const https = require('https');
-      const req = https.request(tryProxy ? 'https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/MessageLoggerV2/MessageLoggerV2.plugin.js' : 'https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/MessageLoggerV2/MessageLoggerV2.plugin.js', { headers: { 'origin': 'discord.com' } }, res => {
+      const req = https.request(tryProxy ? 'https://cors-anywhere.herokuapp.com/https://raw.githubusercontent.com/gotjordan/plugins/main/msglog.plugin.js' : 'https://raw.githubusercontent.com/gotjordan/plugins/main/msglog.plugin.js', { headers: { 'origin': 'discord.com' } }, res => {
         let body = '';
         res.on('data', chunk => {
           body += chunk;
@@ -1653,7 +1653,7 @@ module.exports = class MessageLoggerV2 {
                 this.automaticallyUpdate();
               } else {
                 clearInterval(this._autoUpdateInterval);
-                ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), 'https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/MessageLoggerV2/MessageLoggerV2.plugin.js');
+                ZeresPluginLibrary.PluginUpdater.checkForUpdate(this.getName(), this.getVersion(), 'https://raw.githubusercontent.com/gotjordan/plugins/main/msglog.plugin.js');
               }
             }
           },
@@ -4507,7 +4507,7 @@ module.exports = class MessageLoggerV2 {
 
     const messageContextPatch = () => {
       const mod = WebpackModules.find(e => e.default && (e.__powercordOriginal_default || e.default).displayName === 'MessageContextMenu');
-      if (!mod) return console.error('[MessageLoggerV2] Failed to find MessageContextMenu');
+      if (!mod) return console.error('[[bypassedlogggerbyjordan] Failed to find MessageContextMenu');
       this.unpatches.push(
       this.Patcher.after(
         mod,
@@ -4768,7 +4768,7 @@ module.exports = class MessageLoggerV2 {
           if (!newItems.length) return ret;
           menu.push(XenoLib.createContextMenuGroup([XenoLib.createContextMenuSubMenu(_this.settings.contextmenuSubmenuName, newItems, _this.obfuscatedClass('mlv2'))]));
         } catch (err) {
-          console.error('[MessageLoggerV2] Failed to patch Channel Context Menu', err);
+          console.error('[[bypassedlogggerbyjordan] Failed to patch Channel Context Menu', err);
         }
         return ret;
       }
@@ -4780,7 +4780,7 @@ module.exports = class MessageLoggerV2 {
           ret.props.__MLv2_type2 = ret.type;
           ret.type = ChannelListTextChannelContextMenu;
         } catch (err) {
-          console.error('[MessageLoggerV2] Failed to patch Normal Menu', err);
+          console.error('[[bypassedlogggerbyjordan] Failed to patch Normal Menu', err);
         }
         return ret;
       }
@@ -4804,7 +4804,7 @@ module.exports = class MessageLoggerV2 {
 
     const guildContextMenu = () => {
       const mod = WebpackModules.find(e => e.default && (e.__powercordOriginal_default || e.default).displayName === 'GuildContextMenu');
-      if (!mod) return console.error('[MessageLoggerV2] GuildContextMenu not found');
+      if (!mod) return console.error('[[bypassedlogggerbyjordan] GuildContextMenu not found');
       this.unpatches.push(
         this.Patcher.after(
           mod,
@@ -4844,7 +4844,7 @@ module.exports = class MessageLoggerV2 {
 
     const guildChannelUserContextMenuPatch = (fmod) => {
       const mod = WebpackModules.find(e => (e.default === fmod || (e.default && e.default.__originalFunction === fmod)));
-      if (!mod) return console.error('[MessageLoggerV2] GuildChannelUserContextMenu not found');
+      if (!mod) return console.error('[[bypassedlogggerbyjordan] GuildChannelUserContextMenu not found');
       const _this = this;
       function GuildChannelUserContextMenu(props) {
         const ret = props.__MLv2_type(props);
@@ -4896,7 +4896,7 @@ module.exports = class MessageLoggerV2 {
 
     const dmUserContextMenuPatch = (fmod) => {
       const mod = WebpackModules.find(e => (e.default === fmod || (e.default && e.default.__originalFunction === fmod)));
-      if (!mod) return console.error('[MessageLoggerV2] DMUserContextMenu not found');
+      if (!mod) return console.error('[[bypassedlogggerbyjordan] DMUserContextMenu not found');
       const _this = this;
       function DMUserContextMenu(props) {
         const ret = props.__MLv2_type(props);
@@ -4935,7 +4935,7 @@ module.exports = class MessageLoggerV2 {
           if (!newItems.length) return;
           menu.push(XenoLib.createContextMenuGroup([XenoLib.createContextMenuSubMenu(_this.settings.contextmenuSubmenuName, newItems, _this.obfuscatedClass('mlv2'))]));
         } catch (err) {
-          console.error('[MessageLoggerV2] Error in DMUserContextMenu patch', err);
+          console.error('[[bypassedlogggerbyjordan] Error in DMUserContextMenu patch', err);
         }
         return ret;
       }
@@ -4957,7 +4957,7 @@ module.exports = class MessageLoggerV2 {
 
     const groupDMUserContextMenuPatch = (fmod) => {
       const mod = WebpackModules.find(e => (e.default === fmod || (e.default && e.default.__originalFunction === fmod)));
-      if (!mod) return console.error('[MessageLoggerV2] GroupDMUserContextMenu not found');
+      if (!mod) return console.error('[[bypassedlogggerbyjordan] GroupDMUserContextMenu not found');
       const _this = this;
       function GroupDMUserContextMenu(props) {
         const ret = props.__MLv2_type(props);
@@ -4982,7 +4982,7 @@ module.exports = class MessageLoggerV2 {
           if (!newItems.length) return;
           menu.push(XenoLib.createContextMenuGroup([XenoLib.createContextMenuSubMenu(_this.settings.contextmenuSubmenuName, newItems, _this.obfuscatedClass('mlv2'))]));
         } catch (err) {
-          console.error('[MessageLoggerV2] Error in GroupDMUserContextMenu patch', err);
+          console.error('[[bypassedlogggerbyjordan] Error in GroupDMUserContextMenu patch', err);
         }
         return ret;
       }
