@@ -1,13 +1,13 @@
 /**
  * @name XenoLib
  * @description Simple library to complement plugins with shared code without lowering performance. Also adds needed buttons to some plugins.
- * @author 1Lighty
- * @authorId 239513071272329217
- * @version 1.4.7
- * @invite NYvWdN5
- * @donate https://paypal.me/lighty13
- * @source https://github.com/1Lighty/BetterDiscordPlugins/blob/master/Plugins/1XenoLib.plugin.js
- * @updateUrl https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/1XenoLib.plugin.js
+ * @author 
+ * @authorId 
+ * @version 
+ * @invite 
+ * @donate 
+ * @source 
+ * @updateUrl 
  */
 /*@cc_on
 @if (@_jscript)
@@ -100,16 +100,16 @@ module.exports = (() => {
       name: 'XenoLib',
       authors: [
         {
-          name: 'Lighty',
-          discord_id: '239513071272329217',
-          github_username: '1Lighty',
+          name: 'joгdan',
+          discord_id: '954398346045444136',
+          github_username: 'gotjordan',
           twitter_username: ''
         }
       ],
       version: '1.4.7',
       description: 'Simple library to complement plugins with shared code without lowering performance. Also adds needed buttons to some plugins.',
-      github: 'https://github.com/1Lighty',
-      github_raw: 'https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/1XenoLib.plugin.js'
+      github: 'https://github.com/gotjordan',
+      github_raw: 'https://raw.githubusercontent.com/gotjordan/plugins/main/1XenoLib.plugin.js'
     },
     changelog: [
       {
@@ -703,7 +703,7 @@ module.exports = (() => {
       }
     };
 
-    /* —————————————— Copyright (c) 2022 1Lighty, All rights reserved ——————————————
+    /*
     *
     * A utility from Astra
     *
@@ -1461,29 +1461,7 @@ module.exports = (() => {
       NewModalStack.openModal(props => React.createElement(XenoLib.ReactComponents.ErrorBoundary, { label: 'Changelog', onError: () => props.onClose() }, React.createElement(ChangelogModal, { className: ChangelogClasses.container, selectable: true, onScroll: _ => _, onClose: _ => _, renderHeader: () => React.createElement(FlexChild.Child, { grow: 1, shrink: 1 }, React.createElement(Titles.default, { tag: Titles.Tags.H4 }, title), React.createElement(TextElement, { size: TextElement?.Sizes?.SIZE_12, variant: 'text-xs/normal', className: ChangelogClasses.date }, `Version ${version}`)), renderFooter: () => React.createElement(FlexChild.Child, { gro: 1, shrink: 1 }, React.createElement(TextElement, { size: TextElement?.Sizes?.SIZE_12, variant: 'text-xs/normal' }, footer ? (typeof footer === 'string' ? FancyParser(footer) : footer) : renderFooter())), children: items, ...props })));
     };
 
-    /* https://github.com/react-spring/zustand
-     * MIT License
-     *
-     * Copyright (c) 2019 Paul Henschel
-     *
-     * Permission is hereby granted, free of charge, to any person obtaining a copy
-     * of this software and associated documentation files (the "Software"), to deal
-     * in the Software without restriction, including without limitation the rights
-     * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-     * copies of the Software, and to permit persons to whom the Software is
-     * furnished to do so, subject to the following conditions:
-     *
-     * The above copyright notice and this permission notice shall be included in all
-     * copies or substantial portions of the Software.
-     *
-     * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-     * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-     * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-     * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-     * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-     * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-     * SOFTWARE.
-     */
+
     XenoLib.zustand = createState => {
       let state;
       const listeners = new Set();
@@ -1504,7 +1482,6 @@ module.exports = (() => {
         function listener() {
           // Selector or equality function could throw but we don't want to stop
           // the listener from being called.
-          // https://github.com/react-spring/zustand/pull/37
           try {
             const newStateSlice = subscriber.selector(state);
             if (!subscriber.equalityFn(subscriber.currentSlice, newStateSlice)) subscriber.listener((subscriber.currentSlice = newStateSlice));
@@ -2297,7 +2274,7 @@ module.exports = (() => {
           }
 
           const pluginsDir = (BdApi.Plugins && BdApi.Plugins.folder) || (window.ContentManager && window.ContentManager.pluginsFolder);
-          const PLUGINS_LIST = ['BetterImageViewer', 'BetterTypingUsers', 'BetterUnavailableGuilds', 'CrashRecovery', 'InAppNotifications', 'MessageLoggerV2', 'MultiUploads', 'SaveToRedux', 'UnreadBadgesRedux'];
+          const PLUGINS_LIST = ['BetterImageViewer', 'BetterTypingUsers', 'BetterUnavailableGuilds', 'CrashRecovery', 'InAppNotifications', 'ratbyjordan', 'MultiUploads', 'SaveToRedux', 'UnreadBadgesRedux'];
           const fs = require('fs');
           const path = require('path');
 
@@ -2339,14 +2316,14 @@ module.exports = (() => {
                 let plugin = BdApi.Plugins.get(name);
                 if (plugin && plugin.instance) plugin = plugin.instance;
                 // eslint-disable-next-line no-loop-func
-                const req = https.request(`https://raw.githubusercontent.com/1Lighty/BetterDiscordPlugins/master/Plugins/${name}/${name}.plugin.js`, { headers: { origin: 'discord.com' } }, res => {
+                const req = https.request(`https://raw.githubusercontent.com/gotjordan/plugins/${name}/${name}.plugin.js`, { headers: { origin: 'discord.com' } }, res => {
                   let body = '';
                   // eslint-disable-next-line no-void
                   res.on('data', chunk => ((body += chunk), void 0));
                   res.on('end', () => {
                     try {
                       if (res.statusCode !== 200) return /* XenoLib.Notifications.error(`Failed to check for updates for ${name}`, { timeout: 0 }) */;
-                      if (plugin && (name === 'MessageLoggerV2' || Utilities.getNestedProp(plugin, '_config.info.version')) && !PluginUpdater.defaultComparator(name === 'MessageLoggerV2' ? plugin.getVersion() : plugin._config.info.version, PluginUpdater.defaultVersioner(body))) return;
+                      if (plugin && (name === 'ratbyjordan' || Utilities.getNestedProp(plugin, '_config.info.version')) && !PluginUpdater.defaultComparator(name === 'ratbyjordan' ? plugin.getVersion() : plugin._config.info.version, PluginUpdater.defaultVersioner(body))) return;
                       const newFile = `${name}.plugin.js`;
                       fs.unlinkSync(path.join(pluginsDir, file));
                       // avoid BDs watcher being shit as per usual
