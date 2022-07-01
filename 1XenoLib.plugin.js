@@ -1,13 +1,13 @@
 /**
  * @name XenoLib
  * @description Simple library to complement plugins with shared code without lowering performance. Also adds needed buttons to some plugins.
- * @author 
- * @authorId 
- * @version 
- * @invite 
- * @donate 
- * @source 
- * @updateUrl 
+ * @author notjordan
+ * @authorId 123
+ * @version 123
+ * @invite 123
+ * @donate 123
+ * @source 123
+ * @updateUrl 123
  */
 /*@cc_on
 @if (@_jscript)
